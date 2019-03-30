@@ -8,17 +8,24 @@ Write a function named greeting that takes in a string and returns the string in
 Then, write a function named speaker that takes in a string and a callback function. The speaker function should return the string in all uppercase letters only by invoking the callback.
 ------------------------------------------------------------------------------------------------ */
 
+// const greeting = (word) => {
+//   word = word.toUpperCase();
+//   return word;
+// }
+
 const greeting = (word) => {
-  word = word.toUpperCase();
-  return word;
+  return word.toUpperCase();
 }
+
+// const speaker = (message, callback) => {
+//   callback = (greeting, message);
+//   return callback.toUpperCase();
+// }
 
 const speaker = (message, callback) => {
-  callback = (greeting, message);
-  return callback.toUpperCase();
+  return callback(message);
 }
-
-/* ------------------------------------------------------------------------------------------------
+ /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
 Write a function named addValues that takes in an array and a value and pushes the value into the array. This function does not need a return statement.
@@ -35,11 +42,14 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  // Solution code here...
+  arr.push(value);
 }
 
 const addNumbers = (num, arr, times, callback) => {
-  // Solution code here...
+  for (let i = 0; i < times; i++) {
+    callback(arr, num);
+  }
+  return arr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,11 +65,14 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const removeOne = (num, arr) => {
-  // Solution code here...
+  if (num % 3 === 2) arr.pop();
 }
 
 const removeElements = (arr, callback) => {
-  // Solution code here...
+  for (let i = 0; i < arr.length; i++) {
+    callback(arr[i], arr);
+  }
+  return arr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -69,7 +82,8 @@ Write a function named removeWithForEach that produces the same output as challe
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithForEach = (arr, callback) => {
-  arr.forEach((number) => ())
+  arr.forEach((number) => callback(number, arr));
+  return arr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,7 +97,12 @@ This anonymous function should accept up to three arguments: the element, the in
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithAnon = (arr) => {
-  // Solution code here...
+  arr.forEach((element) => {
+    if (element % 3 === 2) {
+      arr.pop();
+    }
+  });
+  return arr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -104,7 +123,13 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  // Solution code here...
+  const myList = [];
+  availableItems.forEach(item => {
+    if (item.available) {
+      myList.push(item.name)
+    }
+  })
+  return myList;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -122,7 +147,19 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  const fbArray = [];
+  arr.forEach(num => {
+    if (num % 3 === 0) {
+      fbArray.push('Fizz');
+    } else if (num % 5 === 0) {
+      fbArray.push('Buzz');
+    } else if (num % 3 ===0 && num % 5 === 0) {
+      fbArray.push('Fizz Buzz');
+    } else {
+      fbArray.push(num);
+    }
+  })
+  return fbArray;
 }
 
 /* ------------------------------------------------------------------------------------------------

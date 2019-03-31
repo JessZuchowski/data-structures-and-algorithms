@@ -25,9 +25,14 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 ------------------------------------------------------------------------------------------------ */
 
 
+// const filterStringsWithVowels = (arr) => {
+//   let vowels = arr.filter.toString(/[aeiou]/g);
+//   return vowels;
+// };
+
 const filterStringsWithVowels = (arr) => {
-  let vowels = arr.filter.toString(/[aeiou]/g);
-  return (vowels);
+  let regex = /[aeiou]/g;
+  return arr.filter(str => regex.test(str));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,8 +43,21 @@ Write a function named notInFirstArray that, given two arrays as input, uses fil
 For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
+// const notInFirstArray = (forbiddenValues, arr) => {
+//   let forbidden = arr.filter(value => {
+//     if (forbiddenValues !== forbidden.includes(value));
+//   })
+//   return forbidden;
+// };
+
+// const notInFirstArray = (forbiddenValues, arr) => {
+//   let arr.filter(value => !forbiddenValues.includes(value));
+//   return value;
+// };
+// return arr;
+
 const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
+  return arr.filter(value => !forbiddenValues.includes(value));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -81,9 +99,14 @@ const snorlaxData = {
   weight: 4600,
 };
 
+// const getBaseStatGreaterThan = (arr, minBaseStat) => {
+//   arr.filter(value => value.baseStat > minBaseStat);
+//   return arr;
+// };
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
-  // Solution code here...
+  return arr.filter(value => value.baseStat > minBaseStat);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -94,7 +117,7 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
-  // Solution code here...
+  return arr.filter(value => value.baseStat.name > minBaseStat);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -147,7 +170,7 @@ const characters = [
 ];
 
 const getCharactersWithoutChildren = (arr) => {
-  // Solution code here...
+  return arr.filter(characters => !characters.children);
 };
 
 /* ------------------------------------------------------------------------------------------------

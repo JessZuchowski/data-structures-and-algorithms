@@ -8,8 +8,14 @@ Write a function named countNumberOfElements that, given an array as input, uses
 Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
+// const countNumberOfElements = (arr) => {
+//   return arr.reduce(accumulator, element) => {
+//     accumulator + 1, 0);
+//   }
+// };
+
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  return arr.reduce(acc => acc + 1, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,12 +74,18 @@ let starWarsData = [{
   gender: 'female'
 }];
 
+// const returnNames = (arr) => {
+//   let characters = starWarsData.reduce((acc,person,idx) => {
+//     acc.push(person.name);
+//     return acc;
+//   },[]);
+//   console.log(characters);
+// };
 const returnNames = (arr) => {
-  let characters = starWarsData.reduce((acc,person,idx) => {
-    acc.push(person.name);
+  return arr.reduce((acc, current) => {
+    acc.push(current.name);
     return acc;
-  },[]);
-  console.log(characters);
+  }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -84,11 +96,14 @@ Write a function named reversedString that takes in a string and returns a strin
 Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 ------------------------------------------------------------------------------------------------ */
 
+// const reversedString = (arr) => {
+//   let array = str.split('');
+//   let reversed = arr.reduce((newString, currentLetter) => {
+//     return currentLetter + newString;
+//   }, '');
+// };
 const reversedString = (arr) => {
-  let array = str.split('');
-  let reversed = arr.reduce((newString, currentLetter) => {
-    return currentLetter + newString;
-  }, '');
+  return arr.split('').reduce((acc, current) => current + acc, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -140,8 +155,23 @@ const characters = [
   },
 ];
 
+// const countNumberOfChildren = (arr) => {
+//   return arr.reduce((acc, current) => {
+//     return current.children.length;
+//   }, 0);
+// };
+// const countNumberOfChildren = (arr) => {
+//   if arr.reduce((acc, current) => {
+//     acc(current.children > 0);
+//     return current.children.length;
+//   } else {
+    
+//   }
+// };
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
+  return arr.reduce((acc, current) => {
+    return current.children ? acc + current.children.length : acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -152,10 +182,25 @@ Write a function that, given an array of numbers as input, uses reduce to calcul
 Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
-const calculateAverage = (arr) => {
-  // Solution code here...
-};
+// const calculateAverage = (arr) => {
+//   let output = arr.reduce((acc, current) => {
+//     return {
+//       count: acc.count + current,
+//       sum: acc.sum + current,
+//     }
+//   }, {count: 0, sum: 0});
+//   return output.sum, output.count;
+// };
 
+const calculateAverage = (arr) => {
+  let output = arr.reduce((acc, current) => {
+    return {
+      count: acc.count + 1,
+      sum: acc.sum + current,
+    };
+  }, {count: 0, sum: 0});
+  return output.sum / output.count;
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
@@ -174,7 +219,7 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (arr) => {
-  // Solution code here...
+  return arr.reduce((acc, current) => isPrime(current) ? acc + 1 : acc, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------

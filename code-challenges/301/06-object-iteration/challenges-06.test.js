@@ -1,5 +1,7 @@
 'use strict';
 
+import { objectExpression } from "@babel/types";
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
 
@@ -11,11 +13,13 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true };
 
+// const getCourseKeys = (obj) => {
+//   let properties = Object.keys(courseInfo);
+//   properties.forEach(property => {
+//     console.log(obj, courseInfo[property]);
+//   })
 const getCourseKeys = (obj) => {
-  let properties = Object.keys(courseInfo);
-  properties.forEach(property => {
-    console.log(obj, courseInfo[property]);
-  })
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -71,7 +75,7 @@ let characters = [
 ];
 
 const totalCharacters = (arr) => {
-  console.log(arr);
+  return Object.keys(arr).length;
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -82,7 +86,9 @@ Write a function named getHouses that returns a new array containing the names o
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  Object.values(arr).forEach(person => {
+    houses.push(person.house);
+  });
   return houses;
 };
 
@@ -99,7 +105,13 @@ hasChildrenValues(characters, 'Eddard') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  let children = 0;
+  Object.values(arr).forEach(person => {
+    if (person.name === character) {
+      children = person.children.length > 0 ? true : false;
+    }
+  });
+  return children;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -111,7 +123,13 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  let children = 0;
+  Object.entries(arr).forEach(person => {
+    if (person.name === character) {
+      children = person.children.length > 0 ? true : false;
+    }
+  });
+  return children;
 };
 
 /* ------------------------------------------------------------------------------------------------

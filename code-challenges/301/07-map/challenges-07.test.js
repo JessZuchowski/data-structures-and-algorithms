@@ -10,12 +10,19 @@ You may choose to complete this challenge using a for loop, for...in syntax, or 
 For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and 2 ^ 3 = 8.
 ------------------------------------------------------------------------------------------------ */
 
+// const forLoopTwoToThe = (arr) => {
+//   let squares = forLoopTwoToThe.map(function(n,i){
+//     return n * n;
+//   })
+//   console.log(squares);
+// };
 const forLoopTwoToThe = (arr) => {
-  let squares = forLoopTwoToThe.map(function(n,i){
-    return n * n;
-  })
-  console.log(squares);
-};
+  const loopArray = [];
+  for(let i in arr) {
+    loopArray.push(Math.pow(2, arr[i]));
+  }
+  return loopArray;
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -23,12 +30,19 @@ CHALLENGE 2
 Write a function named forEachTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1, but uses forEach instead of a for loop.
 ------------------------------------------------------------------------------------------------ */
 
+// const forEachTwoToThe = (arr) => {
+//   arr.forEach(function(value, idx) {
+//     (value * value)
+//     console.log(value);
+//   })
+// };
 const forEachTwoToThe = (arr) => {
-  arr.forEach(function(value, idx) {
-    (value * value)
-    console.log(value);
-  })
-};
+  const eachArray = [];
+  arr.forEach ((value) => {
+    eachArray.push(Math.pow(2, value));
+  });
+  return eachArray;
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -36,9 +50,16 @@ CHALLENGE 3
 Write a function named mapTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1 and your forEachTwoToThe function from challenge 2, but uses map instead of a for loop or forEach.
 ------------------------------------------------------------------------------------------------ */
 
+// const mapTwoToThe = (arr) => {
+//   const mapArray = [];
+//   arr.map ((value) => {
+//     Math.pow(2, value);
+//   })
+//   return mapArray;
+// };
 const mapTwoToThe = (arr) => {
-  // Solution code here...
-};
+  return arr.map(value => Math.pow(2, value));
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -51,7 +72,7 @@ For example: charCode(['h','i']) returns [104, 105].
 ------------------------------------------------------------------------------------------------ */
 
 const charCode = (arr) => {
-  // Solution code here...
+  return arr.map(value => value.charCodeAt());
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,7 +86,13 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 ------------------------------------------------------------------------------------------------ */
 
 const evenOdd = (arr) => {
-  // Solution code here...
+  return arr.map((element) => {
+    if (element % 2 === 0) {
+      return 'even';
+    } else if (element % 2 !== 0) {
+      return 'odd';
+    } else return 'N/A';
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -111,7 +138,7 @@ const snorlaxAbilities = {
 };
 
 const extractAbilities = (arr) => {
-  // Solution code here...
+  return arr.map(value => value.ability.name);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -158,7 +185,7 @@ const snorlaxStats = {
 };
 
 const extractStats = (arr) => {
-  // Solution code here...
+  return arr.map(value => value.stats) + arr.map(value => value.baseStat);
 };
 
 /* ------------------------------------------------------------------------------------------------

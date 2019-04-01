@@ -103,7 +103,7 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  arr.sort( (a, b) => a.price > b.price);
+  arr.sort( (a, b) => a[property] > b[property]);
   return arr;
 };
 
@@ -119,10 +119,16 @@ http://www.insecure.com returns false because the URL is not secure
 https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
+// const isSecure = (url) => {
+//   let regex = /^(https:\/\/)$/g;
+//   return regex.test(url);
+// };
+
 const isSecure = (url) => {
-  let regex = /^(https:\/\/)$/g;
+  let regex = /^(https:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/g;
   return regex.test(url);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal

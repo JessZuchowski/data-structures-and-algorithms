@@ -11,7 +11,7 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 const validatePin = (pin) => {
   let regex = /^\d{4}$/g;
   return regex.test(pin)
-  
+ 
   // let validate = pin.match(regex);
   // if (validate) {
   //   return true;
@@ -37,7 +37,8 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  // Solution code here...
+  let regex = /^[A-Za-z0-9]+\.?@[A-Za-z0-9]+.(net|com|org)$/g;
+  return regex.test(email);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -61,15 +62,19 @@ Your function should include a single regular expression pattern that matches an
 Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
+// const validatePhoneNumber = (phoneNumber) => {
+//   let regex = /\d{3}\d{3}\d{4}/g;
+//   let validator = phoneNumber.match(regex);
+//   if(validator.match(regex)) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
 const validatePhoneNumber = (phoneNumber) => {
-  let regex = /\d{3}\d{3}\d{4}/g;
-  let validator = phoneNumber.match(regex);
-  if(validator.match(regex)) {
-    return true;
-  } else {
-    return false;
-  }
-};
+  let regex = /^(\(d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$/g;
+  return regex.test(phoneNumber);
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4 - Stretch Goal

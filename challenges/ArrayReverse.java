@@ -13,7 +13,7 @@ public class ArrayReverse {
       originalArray[i] = originalArray[originalArray.length - i - 1];
       originalArray[originalArray.length - i - 1] = temp;
     }
-    System.out.println(originalArray);
+    System.out.println(Arrays.toString(originalArray));
     return originalArray;
   }
 }
